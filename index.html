@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Mohit Patel - BBA Digital Business and Entrepreneurship student at IIM Bangalore, interested in digital marketing, business analytics and finance.">
+<meta name="author" content="Mohit Patel">
+<title>Mohit Patel | Business & Marketing Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== 1. TOKENS ===== */
+:root{
+--bg:#fbfcfe;--surface:#f1f4f9;--card:#ffffff;--text:#0f1b2e;--muted:#55637a;--accent:#1f4e8c;--accent-2:#c8a45c;--border:#dde4ee;--on-accent:#fff;
+--glow:rgba(31,78,140,.14);--shadow:0 10px 30px -12px rgba(15,27,46,.18);
+--font-body:"DM Sans",system-ui,sans-serif;--font-heading:"Playfair Display",Georgia,serif;
+--section:96px;--radius:14px;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1220;--surface:#101b2e;--card:#142138;--text:#eaf0f9;--muted:#9fb0c7;--accent:#7db3ec;--accent-2:#e0be78;--border:#243653;--on-accent:#0a1220;--glow:rgba(125,179,236,.16);--shadow:0 12px 34px -14px rgba(0,0,0,.7)}}
+:root[data-theme="dark"]{--bg:#0a1220;--surface:#101b2e;--card:#142138;--text:#eaf0f9;--muted:#9fb0c7;--accent:#7db3ec;--accent-2:#e0be78;--border:#243653;--on-accent:#0a1220;--glow:rgba(125,179,236,.16);--shadow:0 12px 34px -14px rgba(0,0,0,.7)}
+
+/* ===== 2. BASE ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(96px + env(safe-area-inset-top,0px));-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.7;font-size:16px;overflow-x:hidden;transition:background .4s,color .4s}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:201}
+a{color:var(--accent);text-decoration:none}
+p{color:var(--muted);max-width:70ch}
+h1,h2,h3,h4{color:var(--text);line-height:1.2}
+::selection{background:var(--accent);color:var(--on-accent)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent-2);outline-offset:4px;border-radius:6px}
+
+/* ===== 3. SCROLL PROGRESS ===== */
+.progress{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--accent),var(--accent-2));z-index:300}
+
+/* ===== 4. NAVIGATION ===== */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:200;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(170%) blur(14px);-webkit-backdrop-filter:saturate(170%) blur(14px);border-bottom:1px solid var(--border)}
+.navbar{max-width:1200px;margin:auto;padding:12px 24px;min-height:76px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{font-family:var(--font-heading);font-size:30px;font-weight:700;color:var(--text);letter-spacing:-1px}
+.logo span{color:var(--accent-2)}
+.nav-menu{display:flex;align-items:center;gap:6px;list-style:none;background:var(--surface);padding:5px;border-radius:999px;border:1px solid var(--border)}
+.nav-link{display:block;color:var(--muted);font-size:14px;font-weight:600;padding:7px 16px;border-radius:999px;transition:all .25s}
+.nav-link:hover{color:var(--text)}
+.nav-link.active{background:var(--accent);color:var(--on-accent)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.theme-toggle{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer;display:grid;place-items:center;transition:transform .3s,border-color .3s}
+.theme-toggle:hover{transform:rotate(25deg);border-color:var(--accent)}
+.theme-toggle svg{width:20px;height:20px}
+.nav-contact{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:9px 20px;border-radius:999px;font-size:14px;font-weight:700;color:var(--on-accent);background:var(--accent);box-shadow:0 6px 18px -6px var(--accent);transition:transform .25s,box-shadow .25s}
+.nav-contact:hover{transform:translateY(-2px);box-shadow:0 10px 22px -6px var(--accent)}
+
+/* ===== 5. SECTIONS ===== */
+.section{position:relative;max-width:1200px;margin:auto;padding:var(--section) 24px}
+.section-heading{margin-bottom:48px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--accent);font-size:12px;font-weight:700;letter-spacing:2.5px;margin-bottom:14px}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--accent-2)}
+.section-heading h2{font-family:var(--font-heading);font-size:clamp(32px,4.6vw,50px);margin-bottom:14px;letter-spacing:-.5px}
+.alternate-section{background:var(--surface);max-width:none;padding-left:max(24px,calc((100% - 1152px)/2));padding-right:max(24px,calc((100% - 1152px)/2));border-block:1px solid var(--border)}
+
+/* ===== 6. REVEAL ANIMATION ===== */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none}
+
+/* ===== 7. HERO ===== */
+.hero-wrap{position:relative;overflow:hidden;background:radial-gradient(1200px 500px at 85% -10%,var(--glow),transparent 60%),var(--bg)}
+.hero-wrap::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:56px 56px;opacity:.45;-webkit-mask-image:radial-gradient(ellipse at 70% 40%,#000 0,transparent 70%);mask-image:radial-gradient(ellipse at 70% 40%,#000 0,transparent 70%)}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;animation:float 14s ease-in-out infinite}
+.orb.one{width:340px;height:340px;background:var(--accent);top:-80px;right:6%;opacity:.22}
+.orb.two{width:260px;height:260px;background:var(--accent-2);bottom:-60px;left:4%;opacity:.2;animation-delay:-6s}
+@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(24px,-30px)}}
+.hero{position:relative;min-height:640px;display:grid;grid-template-columns:1.5fr .8fr;align-items:center;gap:56px}
+.hero h1{font-family:var(--font-heading);font-size:clamp(52px,8vw,92px);letter-spacing:-2px;margin-bottom:18px}
+.hero h1 span{background:linear-gradient(100deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h2{max-width:620px;font-size:22px;font-weight:500;margin-bottom:22px}
+.hero-description{font-size:17px;margin-bottom:34px}
+.hero-buttons,.contact-actions{display:flex;flex-wrap:wrap;gap:14px}
+.button{display:inline-flex;justify-content:center;align-items:center;gap:8px;min-height:52px;padding:12px 26px;border:1px solid var(--accent);border-radius:999px;font-size:15px;font-weight:700;transition:transform .25s,box-shadow .25s,background .25s}
+.button:hover{transform:translateY(-3px)}
+.button-primary{background:var(--accent);color:var(--on-accent);box-shadow:0 10px 24px -10px var(--accent)}
+.button-secondary{color:var(--accent);background:transparent}
+.button-secondary:hover{background:var(--card);box-shadow:var(--shadow)}
+.hero-location{display:inline-flex;align-items:center;gap:8px;margin-top:30px;font-size:14px;color:var(--muted);padding:6px 14px;border:1px solid var(--border);border-radius:999px;background:var(--card)}
+.hero-location::before{content:"";width:8px;height:8px;border-radius:50%;background:#2fb67c;box-shadow:0 0 0 4px rgba(47,182,124,.2)}
+.hero-side{text-align:center}
+.monogram-ring{position:relative;width:260px;height:260px;margin:auto;display:grid;place-items:center}
+.monogram-ring::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,var(--accent),var(--accent-2),var(--accent));animation:spin 12s linear infinite;-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2px));mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2px))}
+@keyframes spin{to{transform:rotate(360deg)}}
+.profile-monogram{width:216px;height:216px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--card);box-shadow:var(--shadow),inset 0 0 0 1px var(--border);font-family:var(--font-heading);font-size:74px;font-weight:700;color:var(--accent)}
+.side-caption{margin:28px auto 0;font-size:14px;letter-spacing:3px;text-transform:uppercase;font-weight:600;color:var(--accent-2)}
+
+/* ===== 8. ABOUT ===== */
+.about-content{max-width:800px;padding-left:28px;border-left:3px solid var(--accent-2)}
+.about-content p{margin-bottom:20px;font-size:17px}
+.about-lead{color:var(--text);font-size:23px!important;font-weight:600;line-height:1.5}
+.career-note{display:inline-block;color:var(--accent);font-weight:700;padding:10px 18px;border-radius:10px;background:var(--glow)}
+
+/* ===== 9. EDUCATION TIMELINE ===== */
+.timeline{position:relative;display:grid;gap:30px;padding-left:36px}
+.timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--accent),var(--accent-2),transparent)}
+.timeline-item{position:relative;display:grid;grid-template-columns:170px 1fr;gap:24px;padding:28px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);transition:transform .3s,box-shadow .3s}
+.timeline-item:hover{transform:translateX(6px);box-shadow:var(--shadow)}
+.timeline-item::before{content:"";position:absolute;left:-36px;top:34px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--accent-2)}
+.timeline-date{font-weight:700;color:var(--accent);font-size:15px}
+.timeline-content h3{font-size:21px;margin-bottom:6px;font-family:var(--font-heading)}
+.timeline-content h4{font-size:15px;font-weight:500;color:var(--muted);margin-bottom:10px}
+.institution{color:var(--text)!important;font-weight:600;margin-bottom:8px}
+.academic-score{font-weight:700;color:var(--accent)!important;font-size:18px}
+.status-label{display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:4px 14px;border:1px solid var(--accent);border-radius:999px;font-size:12px;font-weight:700;color:var(--accent)}
+.status-label::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.25}}
+
+/* ===== 10. EXPERIENCE ===== */
+.experience-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.experience-card{position:relative;overflow:hidden;padding:32px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);display:flex;flex-direction:column;gap:14px;transition:transform .35s,box-shadow .35s,border-color .35s}
+.experience-card::after{content:"";position:absolute;left:0;top:0;height:4px;width:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transform:scaleX(0);transform-origin:left;transition:transform .5s}
+.experience-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:var(--accent)}
+.experience-card:hover::after{transform:scaleX(1)}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.experience-date{font-size:12px;font-weight:600;color:var(--muted);padding:4px 12px;border-radius:999px;background:var(--surface)}
+.card-number{font-family:var(--font-heading);font-size:38px;font-weight:700;line-height:1;color:var(--accent-2);opacity:.75}
+.experience-card h3{font-family:var(--font-heading);font-size:26px}
+.experience-card h4{font-size:15px;color:var(--accent)}
+.experience-card p{font-size:15px}
+.topic-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.topic-list span{background:var(--surface);border:1px solid var(--border);padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600;color:var(--text);transition:all .25s}
+.topic-list span:hover{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+
+/* ===== 11. SKILLS ===== */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.skill-card{position:relative;padding:30px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);transition:transform .35s,box-shadow .35s}
+.skill-card::before{content:"";display:block;width:44px;height:44px;border-radius:12px;margin-bottom:18px;background:linear-gradient(135deg,var(--accent),var(--accent-2));opacity:.9}
+.skill-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.skill-card h3{font-size:19px;margin-bottom:12px;font-family:var(--font-heading)}
+.skill-card p{font-size:15px}
+
+/* ===== 12. CERTIFICATIONS ===== */
+.certification-list{display:grid;gap:18px}
+.certification-item{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 28px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);transition:transform .3s,box-shadow .3s,border-color .3s}
+.certification-item:hover{transform:translateX(8px);box-shadow:var(--shadow);border-color:var(--accent-2)}
+.certification-item h3{font-size:19px;margin-bottom:4px;font-family:var(--font-heading)}
+.certification-item p{font-size:14px}
+.certification-type{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border:1px solid var(--accent);border-radius:999px;white-space:nowrap}
+
+/* ===== 13. CONTACT ===== */
+.contact-section{max-width:none;text-align:center;background:linear-gradient(135deg,var(--accent),#0d2a52);padding-left:24px;padding-right:24px}
+.contact-section .eyebrow,.contact-section h2{color:#fff}
+.contact-section .eyebrow::before{background:var(--accent-2)}
+.contact-section .section-heading{margin-bottom:24px}
+.contact-description{margin:0 auto 34px;color:#d6e2f3}
+.contact-actions{justify-content:center}
+.contact-section .button-primary{background:#fff;color:#0d2a52;border-color:#fff}
+.contact-section .button-secondary{color:#fff;border-color:rgba(255,255,255,.6)}
+.contact-section .button-secondary:hover{background:rgba(255,255,255,.12);box-shadow:none}
+.email-address{margin:30px auto 0;color:#fff;font-weight:700;letter-spacing:.5px}
+
+/* ===== 14. PAPER RESUME ===== */
+.resume-section{padding:80px 24px;background:var(--surface)}
+.resume-download{max-width:800px;margin:0 auto 24px;text-align:center}
+.resume-download button{min-height:48px;padding:12px 26px;background:var(--accent);color:var(--on-accent);border:0;border-radius:999px;font:700 15px var(--font-body);cursor:pointer;box-shadow:0 10px 24px -10px var(--accent);transition:transform .25s}
+.resume-download button:hover{transform:translateY(-3px)}
+.resume-paper{max-width:800px;margin:auto;padding:52px;background:#fff;color:#111;box-shadow:0 20px 50px -20px rgba(0,0,0,.35);border-radius:4px;font-size:12px;line-height:1.5;overflow-x:auto}
+.resume-paper h1{font-size:28px;letter-spacing:1.5px;color:#111;font-family:var(--font-heading)}
+.resume-header{padding-bottom:15px;border-bottom:2px solid #111}
+.resume-header p{color:#333;font-size:11px}
+.resume-block,.resume-profile{margin-top:18px}
+.resume-paper h2{font-size:13px;letter-spacing:1px;border-bottom:1px solid #777;padding-bottom:4px;margin-bottom:9px;color:#111}
+.resume-entry{margin-bottom:12px}
+.resume-entry h3{font-size:12px;color:#111}
+.resume-paper p,.resume-paper li{color:#333}
+.resume-paper ul{padding-left:18px}
+
+/* ===== 15. RESPONSIVE ===== */
+@media(max-width:960px){.nav-menu{display:none}.skills-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){
+:root{--section:64px}
+.navbar{padding:12px 18px}
+.logo{font-size:26px}
+.nav-contact{padding:9px 14px;font-size:13px}
+.section{padding:var(--section) 20px}
+.hero{min-height:auto;grid-template-columns:1fr;padding-top:56px;padding-bottom:56px;gap:36px}
+.hero-side{order:-1}
+.monogram-ring{width:170px;height:170px}
+.profile-monogram{width:140px;height:140px;font-size:46px}
+.side-caption{font-size:12px;margin-top:18px}
+.hero h2{font-size:19px}
+.experience-grid,.skills-grid{grid-template-columns:1fr}
+.timeline{padding-left:26px}
+.timeline-item{grid-template-columns:1fr;gap:10px;padding:22px}
+.timeline-item::before{left:-26px}
+.about-content{padding-left:18px}
+.about-lead{font-size:19px!important}
+.certification-item{align-items:flex-start;flex-direction:column}
+.contact-actions{flex-direction:column}
+.contact-actions .button{width:100%}
+.resume-section{padding:40px 12px}
+.resume-paper{padding:26px 18px}}
+
+/* ===== 16. PRINT: A4 RESUME ===== */
+@media print{
+@page{size:A4;margin:10mm}
+body{background:#fff!important;font-size:10px}
+body::before,.progress{display:none}
+body *{visibility:hidden!important}
+#resume,#resume *{visibility:visible!important}
+#resume{position:absolute;top:0;left:0;width:100%;padding:0;margin:0;background:#fff!important}
+.resume-download{display:none!important}
+.resume-paper{width:100%;max-width:none;padding:0;margin:0;box-shadow:none;font-size:9px;line-height:1.3}
+.resume-paper h1{font-size:22px}
+.resume-paper h2{font-size:11px}
+.resume-paper p,.resume-paper li{color:#000!important;font-size:9px}
+.resume-block,.resume-profile,.resume-entry{break-inside:avoid}}
+
+/* ===== 17. REDUCED MOTION ===== */
+@media(prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+.reveal{opacity:1;transform:none}
+*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="site-header"><nav class="navbar">
+<a href="#hero" class="logo">MP<span>.</span></a>
+<ul class="nav-menu">
+<li><a href="#about" class="nav-link">About</a></li>
+<li><a href="#education" class="nav-link">Education</a></li>
+<li><a href="#experience" class="nav-link">Experience</a></li>
+<li><a href="#skills" class="nav-link">Skills</a></li>
+<li><a href="#certifications" class="nav-link">Certifications</a></li>
+</ul>
+<div class="nav-right">
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle colour theme">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
+<a href="mailto:mp0593976@gmail.com?subject=Internship%20Opportunity" class="nav-contact">Contact Me</a>
+</div>
+</nav></header>
+
+<main>
+<div class="hero-wrap">
+<div class="orb one"></div><div class="orb two"></div>
+<section id="hero" class="hero section">
+<div class="hero-content">
+<p class="eyebrow reveal">BUSINESS · MARKETING · ANALYTICS</p>
+<h1 class="reveal" style="--d:.1s">Mohit <span>Patel.</span></h1>
+<h2 class="reveal" style="--d:.2s">BBA Digital Business &amp; Entrepreneurship Student at IIM Bangalore</h2>
+<p class="hero-description reveal" style="--d:.3s">Interested in digital marketing, finance and business strategy. I am building my understanding of business through academic learning, problem-solving programmes and practical exploration.</p>
+<div class="hero-buttons reveal" style="--d:.4s">
+<a href="#experience" class="button button-primary">Explore My Experience</a>
+<a href="#resume" class="button button-secondary">View My Resume</a>
+</div>
+<div class="hero-location reveal" style="--d:.5s">Madhya Pradesh, India</div>
+</div>
+<div class="hero-side reveal" style="--d:.3s">
+<div class="monogram-ring"><div class="profile-monogram">MP</div></div>
+<p class="side-caption">Learning. Analysing. Building.</p>
+</div>
+</section>
+</div>
+
+<section id="about" class="section">
+<div class="section-heading reveal"><p class="eyebrow">INTRODUCTION</p><h2>About Me</h2></div>
+<div class="about-content reveal">
+<p class="about-lead">I am a first-year Bachelor of Business Administration in Digital Business and Entrepreneurship student at the Indian Institute of Management Bangalore.</p>
+<p>My interests lie in digital marketing, finance and business analytics. Through my academic journey, I am developing analytical thinking and problem-solving abilities.</p>
+<p>I want to apply what I learn in practical business environments and understand how marketing decisions, data and strategy contribute to business growth.</p>
+<p class="career-note">Currently interested in Summer Analyst Internship opportunities in Digital Marketing.</p>
+</div>
+</section>
+
+<section id="education" class="section alternate-section">
+<div class="section-heading reveal"><p class="eyebrow">ACADEMIC BACKGROUND</p><h2>Education</h2></div>
+<div class="timeline">
+<article class="timeline-item reveal">
+<div class="timeline-date">2026 – 2029</div>
+<div class="timeline-content">
+<h3>Bachelor of Business Administration</h3>
+<h4>Digital Business &amp; Entrepreneurship</h4>
+<p class="institution">Indian Institute of Management Bangalore</p>
+<p>Currently pursuing undergraduate studies with an interest in digital business, entrepreneurship, finance and marketing.</p>
+<span class="status-label">Ongoing</span>
+</div>
+</article>
+<article class="timeline-item reveal" style="--d:.1s">
+<div class="timeline-date">Class XII</div>
+<div class="timeline-content">
+<h3>Senior Secondary Education</h3>
+<h4>Physics, Chemistry and Mathematics</h4>
+<p class="institution">Swami Keshwanand Convent School</p>
+<p>Board: CBSE</p>
+<p class="academic-score">Percentage: <span data-count="69.40" data-dec="2">69.40</span>%</p>
+</div>
+</article>
+<article class="timeline-item reveal" style="--d:.2s">
+<div class="timeline-date">Class X</div>
+<div class="timeline-content">
+<h3>Secondary Education</h3>
+<p class="institution">Gayatri Vidhya Mandir H.S. School</p>
+<p>Board: MPBSE</p>
+<p class="academic-score">Percentage: <span data-count="80" data-dec="0">80</span>%</p>
+</div>
+</article>
+</div>
+</section>
+
+<section id="experience" class="section">
+<div class="section-heading reveal"><p class="eyebrow">PROFESSIONAL DEVELOPMENT</p><h2>Experience &amp; Programmes</h2>
+<p>Learning experiences that have contributed to my professional development.</p></div>
+<div class="experience-grid">
+<article class="experience-card reveal">
+<div class="card-top"><span class="experience-date">September 2026 – November 2026</span><span class="card-number">01</span></div>
+<h3>McKinsey Forward Program</h3>
+<h4>McKinsey &amp; Company</h4>
+<p>Participated in the McKinsey Forward Program, focused on professional development and building capabilities relevant to the modern workplace.</p>
+<div class="topic-list"><span>Structured Problem-Solving</span><span>APM Framework</span><span>Adaptability</span><span>Resilience</span></div>
+</article>
+<article class="experience-card reveal" style="--d:.15s">
+<div class="card-top"><span class="experience-date">October 2026 – November 2026</span><span class="card-number">02</span></div>
+<h3>Aspire Leadership Program</h3>
+<h4>Aspire Institute</h4>
+<p>Participated in a leadership development programme focused on strengthening communication, collaboration and critical-thinking capabilities.</p>
+<div class="topic-list"><span>Cross-cultural Communication</span><span>Teamwork</span><span>Social Impact</span><span>Critical Thinking</span></div>
+</article>
+</div>
+</section>
+
+<section id="skills" class="section alternate-section">
+<div class="section-heading reveal"><p class="eyebrow">CAPABILITIES</p><h2>Skills &amp; Knowledge</h2>
+<p>Areas of academic knowledge, tools and interpersonal development.</p></div>
+<div class="skills-grid">
+<article class="skill-card reveal"><h3>Business, Finance &amp; Marketing</h3><p>Financial Accounting, Business Analysis, Data Analysis, Descriptive Analysis, Data Structure, Marketing Management, Financial Statements and Marketing Strategy.</p></article>
+<article class="skill-card reveal" style="--d:.12s"><h3>Digital Tools</h3><p>Microsoft Excel, Microsoft Outlook, Generative AI Tools and Adobe Photoshop.</p></article>
+<article class="skill-card reveal" style="--d:.24s"><h3>Interpersonal Skills</h3><p>Teamwork, Leadership, Problem-Solving and Adaptability.</p></article>
+</div>
+</section>
+
+<section id="certifications" class="section">
+<div class="section-heading reveal"><p class="eyebrow">ADDITIONAL LEARNING</p><h2>Certifications</h2></div>
+<div class="certification-list">
+<article class="certification-item reveal"><div><h3>Technology Job Simulation</h3><p>Deloitte Australia</p></div><span class="certification-type">Job Simulation</span></article>
+<article class="certification-item reveal" style="--d:.12s"><div><h3>Internal Audit Job Simulation</h3><p>Goldman Sachs</p></div><span class="certification-type">Job Simulation</span></article>
+</div>
+</section>
+
+<section id="contact" class="section contact-section">
+<div class="section-heading reveal"><p class="eyebrow">LET’S CONNECT</p><h2>Open to Opportunities</h2></div>
+<p class="contact-description reveal">I am interested in connecting with professionals, learning from new experiences and exploring Summer Analyst Internship opportunities in Digital Marketing.</p>
+<div class="contact-actions reveal">
+<a href="mailto:mp0593976@gmail.com?subject=Internship%20Opportunity" class="button button-primary">Email Me</a>
+<a href="mailto:mp0593976@gmail.com?subject=Let%E2%80%99s%20Collaborate" class="button button-secondary">Let’s Collaborate</a>
+<a href="https://www.linkedin.com/in/mohit-patel-a5a204432/" target="_blank" rel="noopener noreferrer" class="button button-secondary">Connect on LinkedIn</a>
+</div>
+<p class="email-address reveal">mp0593976@gmail.com</p>
+</section>
+
+<section id="resume" class="resume-section">
+<div class="resume-download"><button type="button" onclick="window.print()">Print / Save Resume as PDF</button></div>
+<div class="resume-paper">
+<header class="resume-header">
+<h1>MOHIT PATEL</h1>
+<p>Madhya Pradesh, India</p>
+<p>mp0593976@gmail.com</p>
+<p>linkedin.com/in/mohit-patel-a5a204432</p>
+</header>
+<div class="resume-profile"><h2>PROFILE</h2>
+<p>BBA Digital Business and Entrepreneurship student at IIM Bangalore with interests in digital marketing, finance and business analytics. Interested in applying academic knowledge to practical business challenges through a Summer Analyst Internship in Digital Marketing.</p></div>
+<div class="resume-block"><h2>EXPERIENCE &amp; PROGRAMMES</h2>
+<div class="resume-entry"><h3>McKinsey Forward Program</h3>
+<p>McKinsey &amp; Company | September 2026 – November 2026</p>
+<ul><li>Participated in a professional development programme.</li><li>Developed knowledge of structured problem-solving, APM Framework, adaptability and resilience.</li></ul></div>
+<div class="resume-entry"><h3>Aspire Leadership Program</h3>
+<p>Aspire Institute | October 2026 – November 2026</p>
+<ul><li>Participated in a leadership development programme.</li><li>Focused on cross-cultural communication, teamwork, social impact and critical thinking.</li></ul></div>
+</div>
+<div class="resume-block"><h2>EDUCATION</h2>
+<div class="resume-entry"><h3>BBA – Digital Business &amp; Entrepreneurship</h3><p>Indian Institute of Management Bangalore</p><p>2026 – 2029 | Ongoing</p></div>
+<div class="resume-entry"><h3>Class XII – PCM</h3><p>Swami Keshwanand Convent School</p><p>CBSE | 69.40%</p></div>
+<div class="resume-entry"><h3>Class X</h3><p>Gayatri Vidhya Mandir H.S. School</p><p>MPBSE | 80%</p></div>
+</div>
+<div class="resume-block"><h2>SKILLS</h2>
+<p>Financial Accounting, Business Analysis, Data Analysis, Marketing Management, Marketing Strategy | Microsoft Excel, Outlook, Generative AI Tools, Adobe Photoshop | Teamwork, Leadership, Problem-Solving, Adaptability</p></div>
+<div class="resume-block"><h2>CERTIFICATIONS</h2>
+<p>Technology Job Simulation – Deloitte Australia<br>Internal Audit Job Simulation – Goldman Sachs</p></div>
+</div>
+</section>
+</main>
+
+<script>
+(function(){
+var root=document.documentElement;
+/* Theme toggle (saved in this browser only) */
+try{var t=localStorage.getItem("mp-theme");if(t)root.setAttribute("data-theme",t)}catch(e){}
+document.getElementById("themeToggle").addEventListener("click",function(){
+var dark=root.getAttribute("data-theme")==="dark"||(!root.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme: dark)").matches);
+var next=dark?"light":"dark";root.setAttribute("data-theme",next);
+try{localStorage.setItem("mp-theme",next)}catch(e){}
+});
+/* Scroll progress bar */
+var bar=document.getElementById("progress");
+function prog(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;bar.style.transform="scaleX("+(m>0?h.scrollTop/m:0)+")"}
+addEventListener("scroll",prog,{passive:true});prog();
+/* Reveal on scroll */
+var els=document.querySelectorAll(".reveal");
+if("IntersectionObserver" in window){
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
+els.forEach(function(el){io.observe(el)});
+}else{els.forEach(function(el){el.classList.add("in")})}
+/* Count-up for percentages */
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+if(!e.isIntersecting)return;var el=e.target,end=parseFloat(el.dataset.count),d=parseInt(el.dataset.dec,10),s=null;
+if(matchMedia("(prefers-reduced-motion: reduce)").matches){cio.unobserve(el);return}
+function step(ts){if(!s)s=ts;var p=Math.min((ts-s)/1200,1);el.textContent=(end*(1-Math.pow(1-p,3))).toFixed(d);if(p<1)requestAnimationFrame(step);else el.textContent=end.toFixed(d)}
+requestAnimationFrame(step);cio.unobserve(el)})},{threshold:.6});
+document.querySelectorAll("[data-count]").forEach(function(el){cio.observe(el)});
+/* Active nav link */
+var links=document.querySelectorAll(".nav-link");
+var sio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.toggle("active",l.getAttribute("href")==="#"+e.target.id)})}})},{rootMargin:"-45% 0px -50% 0px"});
+["about","education","experience","skills","certifications"].forEach(function(id){var s=document.getElementById(id);if(s)sio.observe(s)});
+})();
+</script>
+</body>
+</html>
